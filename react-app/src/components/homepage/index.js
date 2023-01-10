@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 
 function HomePage() {
@@ -8,7 +9,9 @@ function HomePage() {
         <>
             <h1> Here is a collection of my mini projects: </h1>
             <div>
-                weather app
+                <NavLink to={'/weather'}>
+                    <div> Click Here for Weather App!</div>
+                </NavLink>
             </div>
             <div>
                 chatgpt api
