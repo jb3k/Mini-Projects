@@ -5,18 +5,36 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomePage from './components/homepage';
 import WeatherApp from './components/weatherAPI';
 import Search from './components/weatherAPI/search';
+import { WEATHER_API_URL, WEATHER_API_KEY } from './components/weatherAPI/search/api';
 
 function App() {
-  // const [loaded, setLoaded] = useState(false);
-  // const dispatch = useDispatch();
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
 
-  // if (!loaded) {
-  //   return null;
-  // }
 
   const handleOnSearchChange = (searchData) => {
+    //search data comes from the fetch data we return in search component.
+    //      we returned it as an object with two k/v pairs: 'value', 'label'
+    //      we split on the space because that how we formatted the data, lat being first, then long being 2nd. 
+    const [lat, lon] = searchData.value.split(" ")
 
-    console.log()
+    //both api urls
+    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=standard`)
+    const forecastFetch = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=standard`)
+
+    //
+    Promise.all([currentWeatherFetch, forecastFetch])
+      .then(async (response) => {
+        const weatherReponse = await response[0].json();
+        const forecastReponse = await response[1].json();
+
+        //setting state with this fetched information, also adding label from the search component
+        setCurrentWeather({ city: searchData.label, ...weatherReponse })
+        setForecast({ city: searchData.label, ...forecastReponse })
+
+      })
+      .catch((err) => console.log(err))
+
 
   }
 
@@ -26,7 +44,7 @@ function App() {
       <Switch>
         <Route path='/weather' exact={true}>
           <Search onSearchChange={handleOnSearchChange} />
-          <WeatherApp />
+          {currentWeather && <WeatherApp data={currentWeather} />}
         </Route>
         <Route path='/'>
           <HomePage />

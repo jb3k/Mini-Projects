@@ -10,10 +10,13 @@ function Search({ onSearchChange }) {
     const loadOptions = (inputValue) => {
         //this fetch call is coming from GeoDB website that has other optional url params including MinPopulation and many more
         //geoAPIOtions also comes from GeoDB site which is pasted and exported in api file
-        return fetch(`${GEO_API_URL}/cities?minPopulation=1000000&namePrefic=${inputValue}`, geoApiOptions)
+
+        return fetch(
+            `${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
+            geoApiOptions
+        )
             .then(response => response.json())
             .then(response => {
-                //
                 return {
                     //response is an object with a key of data which is an array that we need to map thru to get specific data points
                     options: response.data.map((city) => {
@@ -26,7 +29,7 @@ function Search({ onSearchChange }) {
                     })
                 }
             })
-            .catch(err => console.error(err));
+        .catch(err => console.error(err));
 
     }
 
@@ -52,7 +55,6 @@ function Search({ onSearchChange }) {
 
         </>
     )
-
 }
 
 export default Search
