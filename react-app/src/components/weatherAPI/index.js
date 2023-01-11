@@ -4,6 +4,8 @@ import "./weather.css"
 
 function WeatherApp({ data }) {
 
+    console.log(data)
+
     return (
         <>
             <div className="weather">

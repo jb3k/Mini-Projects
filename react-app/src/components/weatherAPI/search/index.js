@@ -12,7 +12,7 @@ function Search({ onSearchChange }) {
         //geoAPIOtions also comes from GeoDB site which is pasted and exported in api file
 
         return fetch(
-            `${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
+            `${GEO_API_URL}/cities?&namePrefix=${inputValue}`,
             geoApiOptions
         )
             .then(response => response.json())
