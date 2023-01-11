@@ -8,9 +8,6 @@ function Search({ onSearchChange }) {
     const [search, setSearch] = useState(null)
 
     const loadOptions = (inputValue) => {
-        //this fetch call is coming from GeoDB website that has other optional url params including MinPopulation and many more
-        //geoAPIOtions also comes from GeoDB site which is pasted and exported in api file
-
         return fetch(
             `${GEO_API_URL}/cities?&namePrefix=${inputValue}`,
             geoApiOptions
@@ -30,7 +27,6 @@ function Search({ onSearchChange }) {
                 }
             })
             .catch(err => console.error(err));
-
     }
 
     const handleOnChange = (searchData) => {
@@ -43,8 +39,8 @@ function Search({ onSearchChange }) {
     return (
         <>
             {/* AsyncPaginate is a package install that just allows a few more features such as:
-             debounceTimeout- allow search to autocomplete after x milliseconds 
-             loadOptions - */}
+        debounceTimeout- allow search to autocomplete after x milliseconds 
+        loadOptions - */}
             <AsyncPaginate
                 placeholder="Search for City"
                 debounceTimeout={600}
