@@ -1,0 +1,23 @@
+.home {
+    display: flex;
+    justify-content: center;
+}
+
+
+.mainpage-template {
+    display: grid;
+    /* grid-row: 1; */
+    grid-template-columns: repeat(4, 200px);
+    margin-top: 15px;
+    overflow: hidden;
+
+}
+
+.project-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px black;
+    height: 200px;
+
+}
