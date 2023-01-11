@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import NavBar from './components/auth/NavBar';
 // import { useDispatch } from 'react-redux';
 // import { authenticate } from './store/session';
 import HomePage from './components/homepage';
 import WeatherApp from './components/weatherAPI';
+import Forecast from './components/weatherAPI/forecast';
 import Search from './components/weatherAPI/search';
 import { WEATHER_API_URL, WEATHER_API_KEY } from './components/weatherAPI/search/api';
 
@@ -43,10 +45,12 @@ function App() {
 
   return (
     <BrowserRouter>
+      <NavBar />
       <Switch>
         <Route path='/weather' exact={true}>
           <Search onSearchChange={handleOnSearchChange} />
           {currentWeather && <WeatherApp data={currentWeather} />}
+          {forecast && <Forecast data={forecast} />}
         </Route>
         <Route path='/'>
           <HomePage />
