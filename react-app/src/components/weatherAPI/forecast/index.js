@@ -27,7 +27,7 @@ function Forecast({ data }) {
                                     <img src={`icons/${item.weather[0].icon}.png`} className="icon-small" alt="weather" />
                                     <div className="day">{forecastDays[idx]}</div>
                                     <div className="description">{item.weather[0].description}</div>
-                                    <div className="min-max">{Math.round(item.main.temp_max)}°C /{Math.round(item.main.temp_min)}°C</div>
+                                    <div className="min-max">{Math.round(item.main.temp_max)}°F /{Math.round(item.main.temp_min)}°F</div>
                                 </div>
                             </AccordionItemButton>
                         </AccordionItemHeading>
@@ -55,7 +55,7 @@ function Forecast({ data }) {
                                 </div>
                                 <div className="daily-details-grid-item">
                                     <label>Feels like:</label>
-                                    <label>{item.main.feels_like}°C</label>
+                                    <label>{item.main.feels_like}°F</label>
                                 </div>
                             </div>
                         </AccordionItemPanel>
