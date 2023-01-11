@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import NavBar from './components/auth/NavBar';
 // import { useDispatch } from 'react-redux';
 // import { authenticate } from './store/session';
 import HomePage from './components/homepage';
@@ -44,6 +45,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <NavBar />
       <Switch>
         <Route path='/weather' exact={true}>
           <Search onSearchChange={handleOnSearchChange} />
