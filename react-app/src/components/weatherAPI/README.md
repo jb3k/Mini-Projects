@@ -32,10 +32,6 @@
 
 
 
-![image](./Readme-images/img1.png)
-* Above is the API URL to fetch data. You need to get the latitude and longitude along with the given API when signing up. 
-
-
 # Walkthrough
 
 
@@ -72,4 +68,8 @@
 
 ## Weather 
 
-1)
+![image](./Readme-images/img1.png)
+* Above is the API URL to fetch data. You need to get the latitude and longitude along with the given API when signing up. 
+
+
+1. 
