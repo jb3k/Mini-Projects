@@ -25,8 +25,7 @@ function App() {
     const forecastFetch = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=imperial`)
 
     // console.log(currentWeatherFetch)
-
-    //
+    
     Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (response) => {
         const weatherReponse = await response[0].json();
