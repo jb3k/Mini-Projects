@@ -29,13 +29,14 @@ function Search({ onSearchChange }) {
                     })
                 }
             })
-        .catch(err => console.error(err));
+            .catch(err => console.error(err));
 
     }
 
     const handleOnChange = (searchData) => {
         setSearch(searchData);
         onSearchChange(searchData)
+        // setSearch('')
     }
 
 

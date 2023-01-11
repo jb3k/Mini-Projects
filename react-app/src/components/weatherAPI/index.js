@@ -4,7 +4,7 @@ import "./weather.css"
 
 function WeatherApp({ data }) {
 
-    console.log(data)
+    // console.log(data)
 
     return (
         <>
