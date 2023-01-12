@@ -25,7 +25,7 @@
 * Open Weather API was primarily used to get and forecast the weather of a specific location
 
 ## Accordion
-* 
+* Accordion component allows the user to show and hide sections of related content on a page
 
 ## Async-Paginate
 * AsyncPaginate is an alternative of Async but supports loading page by page. It is wrapper above default react-select thus it accepts all props of default Select. And there are some additional props that I used for the project.
@@ -38,22 +38,25 @@
 ## Search
 1. The first thing I set up in this project was the search feature. To do this, I used the GeoDB cities API call to find the locations of cities. 
 
-![image](./Readme-images/img4.png)
 
 2. Next I create the search function using the Async Paginate package installed. 
+![image](./Readme-images/img4.png)
+
   * It uses loadOptions function attribute to load the option into the select box and it expect return value as {options: [], hasMore: false}. 
   * Another additional feature of AsyncPaginate is the debounceTimeout - where it will wait after a given input (in milliseconds) for the last received action before executing suggestions to finish what you've typed. 
   * Value is the value inputed into the search bar
   * OnChange takes in a function that handles any changes in the search bar
 
-![image](./Readme-images/img3.png)
 
 3. Once adding this onto a separate file, I exported these variables to fetch that data in my search function. * Note * (you could also add specific parameters for the search such as: Min Population, Max population, etc. More can be found in the GeoDB documentation)
+![image](./Readme-images/img3.png)
 
 
-![image](./Readme-images/img5.png)
 
 4. Next is the most important function that will fetch the data we need from the API. The loadOptions function (which is passed into the loadOptions argument) will return the data fetched from the API URL that we exported in the step above. 
+![image](./Readme-images/img5.png)
+
+
   * Once we have the data we neeed to parse the response into json
   * Then return a value that the loadOptions argument can use. In this case, it is an object with a k/v pair with key as 'options' and value as whatever data we need. 
   * Specifically for the OpenWeatherAPI we need to latitude and longitude, so that is the data we are going to take.
