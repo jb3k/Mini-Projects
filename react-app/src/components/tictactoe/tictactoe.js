@@ -3,14 +3,13 @@ import './tictactoe.css'
 
 function TicTacToe() {
 
-    let [square, setSquare] = useState(Array(9).fill(null))
+    let [square, setSquare] = useState(Array(9).fill(''))
     let [isX, setIsX] = useState(true)
 
     let handleClick = (i) => {
         if (calculateWinner(square || square[i])) return
-
-
-        square[i] = isX ? "X" : "O"
+        if (square[i] === "X" || square[i] === "O") return
+        square[i] = (isX ? "X" : "O")
         setSquare(square)
         setIsX(!isX)
     }
