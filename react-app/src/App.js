@@ -4,6 +4,7 @@ import NavBar from './components/auth/NavBar';
 // import { useDispatch } from 'react-redux';
 // import { authenticate } from './store/session';
 import HomePage from './components/homepage';
+import TicTacToe from './components/tictactoe/tictactoe';
 import WeatherApp from './components/weatherAPI';
 import Forecast from './components/weatherAPI/forecast';
 import Search from './components/weatherAPI/search';
@@ -25,7 +26,7 @@ function App() {
     const forecastFetch = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=imperial`)
 
     // console.log(currentWeatherFetch)
-    
+
     Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (response) => {
         const weatherReponse = await response[0].json();
@@ -50,6 +51,9 @@ function App() {
           <Search onSearchChange={handleOnSearchChange} />
           {currentWeather && <WeatherApp data={currentWeather} />}
           {forecast && <Forecast data={forecast} />}
+        </Route>
+        <Route path='/tictactoe' exact={true}>
+          <TicTacToe />
         </Route>
         <Route path='/'>
           <HomePage />

@@ -16,7 +16,9 @@ function HomePage() {
                         </NavLink>
                     </div>
                     <div className='project-container'>
-                        chatgpt api
+                        <NavLink to={'/tictactoe'}>
+                            <div> TicTacToe Game</div>
+                        </NavLink>
                     </div>
                     <div className='project-container'>
                         simple calculator
