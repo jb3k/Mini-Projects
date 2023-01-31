@@ -8,7 +8,7 @@ function TicTacToe() {
 
     let handleClick = (i) => {
         if (calculateWinner(square || square[i])) return
-        if (square[i] !== "") return
+        if (square[i] !== '') return
         square[i] = (isX ? "X" : "O")
         setSquare(square)
         setIsX(!isX)
@@ -16,7 +16,6 @@ function TicTacToe() {
 
 
     let calculateWinner = () => {
-
         let horizontalWinner = [
             [0, 1, 2],
             [3, 4, 5],
@@ -36,6 +35,7 @@ function TicTacToe() {
         for (let i = 0; i < allWinners.length; i++) {
             const [a, b, c] = allWinners[i]
 
+            //
             if (square[a] && square[a] === square[b] && square[a] === square[c]) {
                 return square[a]
             }
@@ -45,17 +45,15 @@ function TicTacToe() {
 
     let handleRestart = () => {
         setIsX(true)
-        setSquare(Array(9).fill(null))
+        setSquare(Array(9).fill(''))
     }
-
 
 
     let winner = calculateWinner(square)
     let status
-
     winner ? status = `Winner is ${winner}!` : status = `Next player: ${isX ? 'X' : 'O'}`
 
-    let board = (
+    return (
         <>
             <div className="game-board">
                 <div className="board-row">
@@ -80,13 +78,6 @@ function TicTacToe() {
                     <button className="restart-game" onClick={handleRestart}>Restart</button>
                 </div>
             </div>
-        </>
-
-    )
-
-    return (
-        <>
-            {board}
         </>
     )
 
