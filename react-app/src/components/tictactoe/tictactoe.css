@@ -18,3 +18,26 @@
     align-items: center;
     font-size: 100px
 }
+
+.game-status {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 300px;
+    align-items: center;
+}
+
+.status-text {
+    font-size: 24px;
+}
+
+.restart-game {
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-size: 24px;
+}
