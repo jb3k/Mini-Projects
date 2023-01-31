@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import './tictactoe.css'
-import calculateWinner from "./calculateWinner"
 
 function TicTacToe() {
 
