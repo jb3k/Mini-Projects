@@ -8,7 +8,7 @@ function TicTacToe() {
 
     let handleClick = (i) => {
         if (calculateWinner(square || square[i])) return
-        if (square[i] === "X" || square[i] === "O") return
+        if (square[i] !== "") return
         square[i] = (isX ? "X" : "O")
         setSquare(square)
         setIsX(!isX)
