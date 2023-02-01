@@ -2,11 +2,10 @@ import React, { useState } from "react"
 import './calc.css'
 
 function Calulator() {
-    const [result, setResult] = useState('Hello World')
+    const [result, setResult] = useState('')
 
     const handleClick = (e) => {
-        if (result === 'Hello World') handleClear()
-        else setResult(result.concat(e.target.name))
+        setResult(result.concat(e.target.name))
     }
 
     const handleClear = () => {
