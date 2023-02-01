@@ -21,7 +21,11 @@ function HomePage() {
                         </NavLink>
                     </div>
                     <div className='project-container'>
-                        simple calculator
+                        <NavLink to={'/calc'}>
+                            <div>
+                                simple calculator
+                            </div>
+                        </NavLink>
                     </div>
                     <div className='project-container'>
                         something else

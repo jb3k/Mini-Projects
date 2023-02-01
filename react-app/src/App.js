@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/auth/NavBar';
+import Calulator from './components/calculator/calculator';
 // import { useDispatch } from 'react-redux';
 // import { authenticate } from './store/session';
 import HomePage from './components/homepage';
@@ -54,6 +55,9 @@ function App() {
         </Route>
         <Route path='/tictactoe' exact={true}>
           <TicTacToe />
+        </Route>
+        <Route path='/calc' exact={true}>
+          <Calulator />
         </Route>
         <Route path='/'>
           <HomePage />
