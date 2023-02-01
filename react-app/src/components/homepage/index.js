@@ -23,7 +23,7 @@ function HomePage() {
                     <div className='project-container'>
                         <NavLink to={'/calc'}>
                             <div>
-                                simple calculator
+                                Simple Calculator
                             </div>
                         </NavLink>
                     </div>
