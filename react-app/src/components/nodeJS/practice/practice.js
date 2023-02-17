@@ -39,3 +39,33 @@ if (!fs.existsSync('./stuff')) { // if the file already exists
         console.log('folder created')
     })
 }
+
+
+
+// Streams:
+//create stream
+const readStream = fs.createReadStream('/some kind of file' // can add an addtional arg ex: {encode: 'utf8'} and it will convert file to string
+)
+
+readStream.on('data', (chunk) => {
+    console.log('-----New Chunk -----')
+    console.log(chunk) // raw data
+    console.log(chunk.toString()) // now if its a text file (.txt) or something you can see the text
+
+})
+
+//this is going to return chunks of data in a stream as the file buffers. Similar to watching a show.
+
+//write stream
+const writeStream = fs.createWriteStream('/some kind of file')
+// when you run the file it will write this stuff in that file you are writing too above
+readStream.on('data', (chunk) => {
+    console.log('-----New Chunk -----')
+    console.log(chunk)
+    writeStream.write('anything you want to write')
+    writeStream.write(chunk)
+
+})
+
+//piping
+readStream.pipe(writeStream) // as it reads it will write
