@@ -29,13 +29,13 @@ const server1 = http.createServer((req, res) => {
     res.setHeader('Content-type', 'text/plain') // 1) setting header type being sent back to browser
     res.write('hello world') // 2) whatever content we want to send to browser
     res.end() // 3) ending the response so it knows to send back to browser
-    
+
     //another ex: sending html 
     res.setHeader('Content-type', 'text/html') // 1) setting header type being sent back to browser
     res.write('<p>hello<p>') // 2) whatever content we want to send to browser
     res.write('<p>hello world<p>') // 2) whatever content we want to send to browser
     res.end() // 3) ending the response so it knows to send back to browser
-    
+
 
     //another ex: sending an html file to browser from server
     fs.readFile('file path', (err, data) => {
@@ -59,18 +59,27 @@ server1.listen(3001, 'localhost' /* localhost is default, but can speciy in 2nd 
 
 //EX: 2  basic routing system to different url in the browser. 
 const server2 = http.createServer((req, res) => {
-    console.log(req.url, req.method) // will return /whatever url the browser has.. ex: /about , GET
+    // console.log(req.url, req.method) // will return /whatever url the browser has.. ex: /about , GET
 
     let path = '/file path/'
-    switch(req.url){
+    switch (req.url) {
         case '/':
             path += 'index.html';
+            res.statusCode = 200
             break;
         case '/about':
             path += 'about.html';
+            res.statusCode = 200
+            break;
+        //to redirect in case you change url
+        case '/about-me':
+            res.statusCode = 301
+            res.setHeader('location', '/about')
+            res.end()
             break;
         default:
             path += '404.html';
+            res.statusCode = 404
             break;
     }
 
