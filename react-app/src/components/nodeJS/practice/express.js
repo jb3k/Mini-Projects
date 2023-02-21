@@ -26,5 +26,5 @@ app.get('/', (req, res) => {
 //use will run if there are no other matches, so needs to be at the bottom
 app.use((req, res) => {
 
-    res.sendFile('/file path', { root: __dirname })
+    res.status(404).sendFile('/file path', { root: __dirname })
 })
