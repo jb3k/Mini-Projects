@@ -1,0 +1,65 @@
+
+-- First Dashboard: Order Activity
+    -- 1. total orders
+    -- 2. total sales
+    -- 3. total iteems
+    -- 4. avg. order value
+    -- 5. sales by category
+    -- 6. top selling items
+    -- 7. orders by hour
+    -- 8. sales by hour
+    -- 9. order by address
+    -- 10. orders by delivery / pickup
+
+SELECT orders.id, 
+item.price, 
+orders.quantity, 
+item.category, 
+item.name, 
+orders.create_at, 
+address.address, 
+address.city, 
+address.zipcode, 
+order.delivery
+
+FROM orders 
+LEFT JOIN item ON order.item_id = item.id  --joined orders table to items table
+LEFT JOIN address ON order.address_id = address.id  --joined address table to order table
+
+
+-- Dashboard 2: Inventory Management
+    -- 1. total quantity by ingredients
+    -- 2. total cost of ingredients
+    -- 3. cacluated cost of pizza
+    -- 4. percentage stock reemaining by ingredient
+
+SELECT 
+
+s1.item_name,
+s1.ingredient_id,
+s1.ingredient_name
+
+FROM (SELECT 
+orders.item_id,
+item.sku,
+item.name,
+recipe.ingredient_id,
+recipe.quantity AS recipe_quantity
+sum(order.quantity) AS order_quantity
+ingredient.weight,
+ingredient.price
+FROM
+orders
+LEFT JOIN item ON order.item_id = item.id 
+LEFT JOIN recipe ON item.sku = recipe.id  
+LEFT JOIN ingredient ON ingredient.id = recipe.ingredient_id
+
+GROUP BY
+orders.item_id,
+item.sku,
+item.name,
+recipe.ingredient_id,
+reecipe.quantity,
+ingredient.name,
+ingredient.weight,
+ingredient.price)
