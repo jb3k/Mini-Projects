@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 
+import "./slick.css";
+import "./slick-theme.css";
+
+
 function SliderComponent() {
 
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 1,
+        slidesToShow: 3,
         slidesToScroll: 1
     }
 
