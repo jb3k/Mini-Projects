@@ -5,6 +5,8 @@ import Slider from "react-slick";
 import { SampleNextArrow, SamplePrevArrow } from './arrowFunctions';
 import "./slick.css";
 import "./slick-theme.css";
+import weatherImg from '../images/weather.jpeg'
+import underConstruction from '../images/uc.jpeg'
 
 function HomePage() {
 
@@ -12,16 +14,14 @@ function HomePage() {
         className: "center",
         centerMode: true,
         infinite: true,
-        centerPadding: "100px",
+        centerPadding: "325px",
         slidesToShow: 1,
+        // centerPadding: "60px",
+        // slidesToShow: 3,
         speed: 500,
         dots: true,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
-        // infinite: true,
-        // speed: 500,
-        // slidesToShow: 1,
-        // slidesToScroll: 1,
         // responsive: [
         //     {
         //         breakpoint: 1024,
@@ -56,15 +56,27 @@ function HomePage() {
             <h2> APIS: </h2>
             <Slider {...settings}>
                 <div className='project-container'>
-                    <NavLink to={'/weather'}>
-                        <div> Weather App</div>
+                    <NavLink to={'/weather'} style={{ textDecoration: 'none' }} >
+                        <img className='sliderImage' src={weatherImg} />
+                        <div className='sliderText'> Weather App</div>
                     </NavLink>
                 </div>
                 <div className='project-container'>
-                    In Progress
+                    <img className='sliderImage' src={underConstruction} />
                 </div>
-            </Slider>
-
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+            </Slider >
             <h2> Mini-Games: </h2>
             <Slider {...settings}>
                 <div className='project-container'>
@@ -73,7 +85,19 @@ function HomePage() {
                     </NavLink>
                 </div>
                 <div className='project-container'>
-                    In Progress
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
                 </div>
             </Slider>
 
@@ -87,10 +111,22 @@ function HomePage() {
                     </NavLink>
                 </div>
                 <div className='project-container'>
-                    In Progress
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
+                </div>
+                <div className='project-container'>
+                    <img className='sliderImage' src={underConstruction} />
                 </div>
             </Slider>
-        </div>
+        </div >
     );
 
 };
