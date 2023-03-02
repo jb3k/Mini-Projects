@@ -1,64 +1,76 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './homepage.css'
-import SliderComponent from './slider';
+import Slider from "react-slick";
+
+import "./slick.css";
+import "./slick-theme.css";
 
 function HomePage() {
 
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    }
+
     return (
-        <div className='body'>
-            <h1 style={{ display: "flex", justifyContent: 'center' }}> Here is a collection of my mini projects: </h1>
-            <div className='home'>
-                <div className='mainpage-template'>
-                    <div className='project-container'>
-                        <NavLink to={'/weather'}>
-                            <div> Weather App</div>
-                        </NavLink>
-                    </div>
-                    <div className='project-container'>
-                        <NavLink to={'/tictactoe'}>
-                            <div> TicTacToe Game</div>
-                        </NavLink>
-                    </div>
-                    <div className='project-container'>
-                        <NavLink to={'/calc'}>
-                            <div>
-                                Simple Calculator
-                            </div>
-                        </NavLink>
-                    </div>
-                    <div className='project-container'>
-                        something else
-                    </div>
+        <div className="slider-container">
+            <h2 className="homepage-title"> Here is a Collection of my Mini projects</h2>
+            <Slider {...settings}>
+                <div className='project-container'>
+                    <NavLink to={'/weather'}>
+                        <div> Weather App</div>
+                    </NavLink>
                 </div>
-            </div>
-
-            <div className='container'>
-                <div className='slider'>
-                    <img src='https://via.placeholder.com/210?text=1' />
-                    <img src='https://via.placeholder.com/220?text=2' />
-                    <img src='https://via.placeholder.com/230?text=3' />
-                    <img src='https://via.placeholder.com/240?text=4' />
-                    <img src='https://via.placeholder.com/250?text=5' />
-                    <img src='https://via.placeholder.com/260?text=6' />
-                    <img src='https://via.placeholder.com/270?text=7' />
-                    <img src='https://via.placeholder.com/280?text=8' />
-                    <img src='https://via.placeholder.com/290?text=9' />
-
-
-
+                <div className='project-container'>
+                    <NavLink to={'/tictactoe'}>
+                        <div> TicTacToe Game</div>
+                    </NavLink>
                 </div>
-            </div>
-
-            <div>
-                <SliderComponent />
-            </div>
-
-
-
+                <div className='project-container'>
+                    <NavLink to={'/calc'}>
+                        <div>
+                            Simple Calculator
+                        </div>
+                    </NavLink>
+                </div>
+                <div className='project-container'>
+                    something else
+                </div>
+                {/* </div> */}
+            </Slider>
         </div>
-    )
+    );
 
 };
 
