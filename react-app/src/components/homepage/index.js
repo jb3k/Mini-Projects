@@ -85,7 +85,9 @@ function HomePage() {
                     </NavLink>
                 </div>
                 <div className='project-container'>
-                    <img className='sliderImage' src={underConstruction} />
+                    <NavLink to={'/connectFour'}>
+                        <div> Connect Four Game</div>
+                    </NavLink>
                 </div>
                 <div className='project-container'>
                     <img className='sliderImage' src={underConstruction} />

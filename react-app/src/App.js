@@ -9,6 +9,7 @@ import TicTacToe from './components/tictactoe/tictactoe';
 import WeatherApp from './components/weatherAPI';
 import Forecast from './components/weatherAPI/forecast';
 import Search from './components/weatherAPI/search';
+import ConnectFour from './components/connect4/index'
 import { WEATHER_API_URL, WEATHER_API_KEY } from './components/weatherAPI/search/api';
 
 function App() {
@@ -55,6 +56,9 @@ function App() {
         </Route>
         <Route path='/tictactoe' exact={true}>
           <TicTacToe />
+        </Route>
+        <Route path='/connectFour' exact={true}>
+          <ConnectFour />
         </Route>
         <Route path='/calc' exact={true}>
           <Calulator />
