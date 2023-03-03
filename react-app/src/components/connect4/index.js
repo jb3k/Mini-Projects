@@ -3,20 +3,18 @@ import './connectFour.css'
 
 function ConnectFour() {
 
-    let [spots, setSpots] = useState(Array(7).fill(''))
+    let [spots, setSpots] = useState(Array(42).fill(''))
     let [red, setRed] = useState(true)
+    let moves = [
+        { x: 0, y: 0, player: 'red' },
+        { x: 0, y: 1, player: 'red' },
+        { x: 0, y: 2, player: 'red' }
+    ]
 
-
-    let player1 = (
-        <div className="p1-checker"></div>
-    )
-    let player2 = (
-        <div className="p2-checker"></div>
-    )
     let handleClick = (i) => {
         if (calculateWinner(spots || spots[i])) return
         if (spots[i] !== '') return
-        spots[i] = (red ? player1 : player2)
+        // spots[i] = (red ? player1 : player2)
         setSpots(spots)
         setRed(!red)
     }
@@ -26,29 +24,55 @@ function ConnectFour() {
 
     }
 
+    
+    let getPiece = (x, y) => {
 
-    let board = (
-        <div className="connect-four-board-row">
-            <div className="connect-four-game-box" onClick={() => handleClick(0)}>{spots[0] === '' ? <div className="blank-spot"></div> : spots[0]}</div>
-            <div className="connect-four-game-box" onClick={() => handleClick(1)}>{spots[1] === '' ? <div className="blank-spot"></div> : spots[1]}</div>
-            <div className="connect-four-game-box" onClick={() => handleClick(2)}>{spots[2] === '' ? <div className="blank-spot"></div> : spots[2]}</div>
-            <div className="connect-four-game-box" onClick={() => handleClick(3)}>{spots[3] === '' ? <div className="blank-spot"></div> : spots[3]}</div>
-            <div className="connect-four-game-box" onClick={() => handleClick(4)}>{spots[4] === '' ? <div className="blank-spot"></div> : spots[4]}</div>
-            <div className="connect-four-game-box" onClick={() => handleClick(5)}>{spots[5] === '' ? <div className="blank-spot"></div> : spots[5]}</div>
-            <div className="connect-four-game-box" onClick={() => handleClick(6)}>{spots[6] === '' ? <div className="blank-spot"></div> : spots[6]}</div>
-        </div>
-    )
+        const list = moves.filter((item) => {
+            return (item.x === x && item.y === y)
+        })
+        return list[0]
+    }
+
+
+    let GameBoard = () => {
+        let rows = 6
+        let cols = 7
+        let rowViews = []
+
+        for (let r = 0; r < rows; r++) {
+            let colViews = []
+            for (let c = 0; c < cols; c++) {
+                let piece = getPiece(c, r)
+                colViews.push(
+                    <div className="c4-board" >
+                        <div className="c4-board-spots">
+                            {piece ? <div className="p1-board-spot"></div> : undefined}
+                        </div>
+                    </div>
+                )
+            }
+            rowViews.push(
+                <div className="c4-board-rows">{colViews}</div>
+            )
+        }
+
+        return (
+            <>
+                <div style={{ backgroundColor: 'red', display: 'flex', flexDirection: 'column' }}>
+                    {rowViews}
+                </div>
+
+            </>
+        )
+
+    }
+
 
     return (
         <>
             <h1 style={{ display: 'flex', justifyContent: 'center' }}> Connect Four: </h1>
             <div className="game-board">
-                {board}
-
-                {/* <div className="game-status">
-                    <div className="status-text">{status}</div>
-                    <button className="restart-game" onClick={handleRestart}>Restart</button>
-                </div> */}
+                {GameBoard()}
             </div>
 
         </>
