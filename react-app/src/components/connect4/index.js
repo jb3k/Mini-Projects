@@ -3,34 +3,29 @@ import './connectFour.css'
 
 function ConnectFour() {
 
-    let [spots, setSpots] = useState(Array(42).fill(''))
-    let [red, setRed] = useState(true)
-    let moves = [
-        { x: 0, y: 0, player: 'red' },
-        { x: 0, y: 1, player: 'red' },
-        { x: 0, y: 2, player: 'red' }
-    ]
+    let [playerTurn, setPlayerTurn] = useState(true)
+    let [moves, setMoves] = useState([])
 
-    let handleClick = (i) => {
-        if (calculateWinner(spots || spots[i])) return
-        if (spots[i] !== '') return
-        // spots[i] = (red ? player1 : player2)
-        setSpots(spots)
-        setRed(!red)
-    }
+
 
     let calculateWinner = () => {
 
 
     }
 
-    
-    let getPiece = (x, y) => {
 
+
+    let getPiece = (x, y) => {
         const list = moves.filter((item) => {
             return (item.x === x && item.y === y)
         })
         return list[0]
+    }
+
+    let addMove = (x, y) => {
+        let nextPlayer = playerTurn ? "p1-board-spot" : "p2-board-spot"
+        setPlayerTurn(!playerTurn)
+        setMoves(moves.concat({ x, y, nextPlayer }))
     }
 
 
@@ -44,9 +39,10 @@ function ConnectFour() {
             for (let c = 0; c < cols; c++) {
                 let piece = getPiece(c, r)
                 colViews.push(
-                    <div className="c4-board" >
-                        <div className="c4-board-spots">
-                            {piece ? <div className="p1-board-spot"></div> : undefined}
+                    <div className="c4-board">
+                        <div className="c4-board-spots" onClick={() => { addMove(c, r) }}>
+                            {piece ? <div className={moves[moves.length - 1].nextPlayer} /> : undefined}
+                            {console.log(playerTurn, moves)}
                         </div>
                     </div>
                 )
@@ -55,7 +51,7 @@ function ConnectFour() {
                 <div className="c4-board-rows">{colViews}</div>
             )
         }
-
+        console.log(rowViews)
         return (
             <>
                 <div style={{ backgroundColor: 'red', display: 'flex', flexDirection: 'column' }}>
@@ -64,9 +60,11 @@ function ConnectFour() {
 
             </>
         )
-
     }
 
+    let resetBoard = () => {
+        setMoves([])
+    }
 
     return (
         <>
