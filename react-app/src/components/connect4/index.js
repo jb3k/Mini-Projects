@@ -3,7 +3,7 @@ import './connectFour.css'
 
 function ConnectFour() {
 
-    let [playerTurn, setPlayerTurn] = useState(true)
+    let [playerTurn, setPlayerTurn] = useState('red')
     let [moves, setMoves] = useState([])
 
 
@@ -23,9 +23,9 @@ function ConnectFour() {
     }
 
     let addMove = (x, y) => {
-        let nextPlayer = playerTurn ? "p1-board-spot" : "p2-board-spot"
-        setPlayerTurn(!playerTurn)
-        setMoves(moves.concat({ x, y, nextPlayer }))
+        let nextPlayer = playerTurn === 'red' ? 'yellow' : 'red'
+        setMoves(moves.concat({ x, y, playerTurn }))
+        setPlayerTurn(nextPlayer)
     }
 
 
@@ -41,8 +41,7 @@ function ConnectFour() {
                 colViews.push(
                     <div className="c4-board">
                         <div className="c4-board-spots" onClick={() => { addMove(c, r) }}>
-                            {piece ? <div className={moves[moves.length - 1].nextPlayer} /> : undefined}
-                            {console.log(playerTurn, moves)}
+                            {piece ? <div className={playerTurn} /> : undefined}
                         </div>
                     </div>
                 )
@@ -51,7 +50,7 @@ function ConnectFour() {
                 <div className="c4-board-rows">{colViews}</div>
             )
         }
-        console.log(rowViews)
+
         return (
             <>
                 <div style={{ backgroundColor: 'red', display: 'flex', flexDirection: 'column' }}>
